@@ -5,8 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import {Game} from './Game'
 
 ReactDOM.render(
-
-  document.getElementById('root')
+    <Game />,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
