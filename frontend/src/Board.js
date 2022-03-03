@@ -2,12 +2,34 @@ import React from "react";
 import {Square} from "./Square"
 
 class Board extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            squares: Array(9).fill(null),
+            xMove: true,
+        };
+    }
+
+    handleClick(i) {
+        const squares = this.state.squares.slice();
+        squares[i] = this.state.xMove ? "X" : "O";
+        this.setState({
+            squares: squares,
+            xMove: !this.state.xMove,
+        });
+    }
+
     renderSquare(i) {
-        return <Square value={i}/>;
+        return (
+            <Square
+                value={this.state.squares[i]}
+                onClick={() => this.handleClick(i)}
+            />
+        );
     }
 
     render() {
-        const status = "Next player: X";
+        const status = "Next player: " + (this.state.xMove ? "X" : "O");
 
         return (
             <div>
